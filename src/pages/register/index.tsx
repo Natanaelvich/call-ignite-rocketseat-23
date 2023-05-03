@@ -42,6 +42,12 @@ export default function Register() {
 
   const router = useRouter();
 
+  useEffect(() => {
+    if (router.query.username) {
+      setValue("username", String(router.query.username));
+    }
+  }, [router.query?.username, setValue]);
+
   async function handleRegister(data: RegisterFormData) {
     try {
       await router.push("/register/connect-calendar");
