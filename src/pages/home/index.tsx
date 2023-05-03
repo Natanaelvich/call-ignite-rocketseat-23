@@ -3,6 +3,7 @@ import { Container, Hero, Preview } from "./styles";
 import Image from "next/image";
 import previewImage from "../../assets/app-preview.png";
 import { globalStyles } from "../../styles/global";
+import { ClaimUsernameForm } from "./components/ClaimUsernameForm";
 
 globalStyles()
 
@@ -17,6 +18,8 @@ export default function Home() {
           Conecte seu calendário e permita que as pessoas marquem agendamentos
           no seu tempo livre.
         </Text>
+
+        <ClaimUsernameForm />
       </Hero>
 
       <Preview>
