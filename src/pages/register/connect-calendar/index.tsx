@@ -1,24 +1,28 @@
-
-import { useRouter } from 'next/router'
-import { ArrowRight, Check } from 'phosphor-react'
-// import { api } from "../../../lib/axios"
-import { Container, Header } from '../styles'
-import { AuthError, ConnectBox, ConnectItem } from './styles'
-import { Heading, MultiStep, Button, Text } from '@natanaelvich-ignite-ui/react'
+import { useRouter } from "next/router";
+import { ArrowRight, Check } from "phosphor-react";
+import { signIn, useSession } from "next-auth/react";
+import { Container, Header } from "../styles";
+import { AuthError, ConnectBox, ConnectItem } from "./styles";
+import {
+  Heading,
+  MultiStep,
+  Button,
+  Text,
+} from "@natanaelvich-ignite-ui/react";
 
 export default function ConnectCalendar() {
-//   const session = useSession()
-  const router = useRouter()
+  const session = useSession();
+  const router = useRouter();
 
-  const hasAuthError = !!router.query.error
-  const isSignedId = false
+  const hasAuthError = !!router.query.error;
+  const isSignedId = session.status === "authenticated";
 
   async function handleConnectCalendar() {
-    // await signIn('google')
+    await signIn("google");
   }
 
   async function handleNavigateToNextStep() {
-    await router.push('/register/time-intervals')
+    await router.push("/register/time-intervals");
   }
 
   return (
@@ -72,5 +76,5 @@ export default function ConnectCalendar() {
         </ConnectBox>
       </Container>
     </>
-  )
+  );
 }
