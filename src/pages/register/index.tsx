@@ -14,6 +14,8 @@ import {
   Button,
   Text,
 } from "@natanaelvich-ignite-ui/react";
+import { AxiosError } from "axios";
+import { api } from "../../lib/axios";
 
 const registerFormSchema = z.object({
   username: z
@@ -50,8 +52,20 @@ export default function Register() {
 
   async function handleRegister(data: RegisterFormData) {
     try {
-      await router.push("/register/connect-calendar");
-    } catch {}
+        await api.post('/users', {
+          name: data.name,
+          username: data.username,
+        })
+  
+        await router.push('/register/connect-calendar')
+      } catch (err) {
+        if (err instanceof AxiosError && err?.response?.data?.message) {
+          alert(err.response.data.message)
+          return
+        }
+  
+        console.error(err)
+      }
   }
 
   return (
