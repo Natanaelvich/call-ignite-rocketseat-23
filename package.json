@@ -14,6 +14,7 @@
     "@hookform/resolvers": "^3.1.0",
     "@natanaelvich-ignite-ui/react": "^2.0.0",
     "@prisma/client": "^4.13.0",
+    "@tanstack/react-query": "^4.29.5",
     "@types/node": "18.11.14",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.9",
