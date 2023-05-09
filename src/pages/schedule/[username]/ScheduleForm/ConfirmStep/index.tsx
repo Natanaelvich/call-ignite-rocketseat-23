@@ -8,7 +8,8 @@ import { z } from 'zod'
 
 import { ConfirmForm, FormActions, FormError, FormHeader } from './styles'
 import { Button, Text, TextArea, TextInput } from '@natanaelvich-ignite-ui/react'
-import { api } from '../../../../lib/axios'
+import { api } from '../../../../../lib/axios'
+
 
 const confirmFormSchema = z.object({
   name: z.string().min(3, { message: 'O nome precisa no mínimo 3 caracteres' }),
